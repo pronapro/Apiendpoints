@@ -1,0 +1,16 @@
+
+beautifulsoup4==4.9.3
+bert-extractive-summarizer==0.5.1
+bs4==0.0.1
+Flask==1.1.2
+Flask-RESTful==0.3.8
+gensim==3.8.3
+gensim-sum-ext==0.1.2
+Keras==2.4.3
+Keras-Preprocessing==1.1.2
+matplotlib==3.3.3
+numpy==1.18.5
+pandas==1.1.4
+sklearn==0.0
+tensorflow==2.3.0
+urllib3==1.26.2
