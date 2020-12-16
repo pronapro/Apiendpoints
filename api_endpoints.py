@@ -8,6 +8,7 @@ import flask
 import numpy as np
 from summarize_nltk import nltk_summarizer
 import time
+import requests
 
 app = Flask(__name__)
 #Let's load the best model obtained during training
@@ -38,7 +39,9 @@ def first():
 @app.route('/api/sentiment_analysis', methods =['GET','POST'])
 def lstm_sentiment():
 	if request.method == 'POST':
-		text = request.form['text']
+		#text = request.form['text']
+		request_data = request.get_json()
+		text = request_data['text']
 		#array of sentiment
 		sentiment = ['Neutral','Negative','Positive']
 		sequence = tokenizer.texts_to_sequences([text])
@@ -56,7 +59,8 @@ def lstm_sentiment():
 def text_sum():
 	start = time.time()
 	if request.method == 'POST':
-		rawtext = request.form['rawtext']
+		request_data = request.get_json()
+		rawtext  = request_data['rawtext ']		
 		#final_reading_time = readingTime(rawtext)
 		final_summary_nltk = nltk_summarizer(rawtext)
 		#summary_reading_time_nltk = readingTime(final_summary_nltk)
@@ -66,6 +70,12 @@ def text_sum():
 		print(final_time)
 	return flask.jsonify(Summary=final_summary_nltk , Time=final_time)
 
+@app.route('/api/test', methods =["POST"])
+def test():
+	 #r = requests.get("yochat.goproug.com/api/get-user-chats/1?")
+	 r = requests.get('http://yochat.goproug.com/api/get-user-chats/1')
+	 r = str(r)
+	 return r
 
 
 
