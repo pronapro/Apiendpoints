@@ -36,7 +36,11 @@ def preprocess_texts(text):
 def first():
 	return "ok"
 
+<<<<<<< HEAD
 @app.route('/api/sentiment', methods =['GET','POST'])
+=======
+@app.route('/api/sentiment_analysis', methods =['GET','POST'])
+>>>>>>> d98a54e1a53436d50d3853da37ff02784d31b1f9
 def lstm_sentiment():
 	if request.method == 'POST':
 		#text = request.form['text']
@@ -70,6 +74,7 @@ def text_sum():
 		print(final_time)
 	return flask.jsonify(Summary=final_summary_nltk , Time=final_time)
 
+<<<<<<< HEAD
 @app.route('/api/sentiment_analysis', methods =["POST"])
 def test():
 	 #r = requests.get("yochat.goproug.com/api/get-user-chats/1?")
@@ -107,6 +112,14 @@ def text_summarization():
 
 	 
 
+=======
+@app.route('/api/test', methods =["POST"])
+def test():
+	 #r = requests.get("yochat.goproug.com/api/get-user-chats/1?")
+	 r = requests.get('http://yochat.goproug.com/api/get-user-chats/1')
+	 r = str(r)
+	 return r
+>>>>>>> d98a54e1a53436d50d3853da37ff02784d31b1f9
 
 
 
